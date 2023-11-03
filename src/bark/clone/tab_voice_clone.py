@@ -94,7 +94,8 @@ def get_prompts(path_to_wav: str, use_gpu: bool):
 
 
 def get_encodec_prompts(path_to_wav: str, use_gpu=True):
-    device = "cuda" if use_gpu else "cpu"
+    #"cuda" if use_gpu else "cpu"
+    device = "cpu"
     model: EncodecModel = load_codec_model(use_gpu=use_gpu)
     wav, sr = torchaudio.load(path_to_wav)
     wav = convert_audio(wav, sr, model.sample_rate, model.channels)
